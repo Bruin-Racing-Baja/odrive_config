@@ -1,0 +1,34 @@
+ODRIVE ACTUATOR CONFIG
+
+odrv0.axis1.motor.config.current_lim = 10
+odrv0.axis1.controller.config.vel_limit = 20
+odrv0.axis1.motor.config.calibration_current = 10
+odrv0.config.enable_brake_resistor = True
+odrv0.config.brake_resistance = 0.4699999988079071
+odrv0.config.dc_max_negative_current = -0.01
+odrv0.axis1.motor.config.pole_pairs = 7
+odrv0.axis1.motor.config.torque_constant = 8.27/140
+odrv0.axis1.motor.config.motor_type = MOTOR_TYPE_HIGH_CURRENT
+
+odrv0.axis1.encoder.config.mode = ENCODER_MODE_HALL
+odrv0.axis1.encoder.config.cpr = 42
+
+odrv0.axis1.controller.config.vel_gain = 0.07
+odrv0.axis1.controller.config.vel_integrator_gain = 3
+
+odrv0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+
+
+
+odrv0.axis1.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
+
+odrv0.save_configuration()
+
+
+
+
+
+//
+
+odrv0.axis1.controller.input_vel = 5
+odrv0.axis1.requested_state = 8
