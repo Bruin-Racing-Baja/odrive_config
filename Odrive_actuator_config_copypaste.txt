@@ -18,7 +18,8 @@ odrv0.axis0.controller.config.vel_gain = 0.07
 odrv0.axis0.controller.config.vel_integrator_gain = 3
 
 odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
-
+odrv0.axis0.motor.config.pre_calibrated = True
+odrv0.axis0.encoder.config.pre_calibrated = True
 
 odrv0.axis0.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
 
@@ -50,7 +51,8 @@ odrv0.axis1.controller.config.vel_gain = 0.07
 odrv0.axis1.controller.config.vel_integrator_gain = 3
 
 odrv0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
-
+odrv0.axis0.motor.config.pre_calibrated = True
+odrv0.axis0.encoder.config.pre_calibrated = True
 
 odrv0.axis1.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
 
