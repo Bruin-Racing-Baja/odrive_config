@@ -68,4 +68,11 @@ odrv0.axis1.requested_state = 8
 
 
 
-
+//Switch to GPIO 1 and 2
+odrv0.config.enable_uart_a = False
+odrv0.config.gpio1_mode = GPIO_MODE_DIGITAL
+odrv0.config.gpio2_mode = GPIO_MODE_DIGITAL
+odrv0.config.enable_uart_b = True
+odrv0.config.gpio3_mode = GPIO_MODE_UART_B
+odrv0.config.gpio4_mode = GPIO_MODE_UART_B
+odrv0.reboot()
