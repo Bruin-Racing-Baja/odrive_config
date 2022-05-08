@@ -69,14 +69,24 @@ odrv0.axis1.requested_state = 8
 
 
 //-------------------------//
-Required for M1 to work
+Required for M1 to work on M20
 odrv0.config.enable_uart_a = False
 odrv0.config.gpio1_mode = GPIO_MODE_DIGITAL
 odrv0.config.gpio2_mode = GPIO_MODE_DIGITAL
 odrv0.config.enable_uart_b = True
 odrv0.config.gpio3_mode = GPIO_MODE_UART_B
 odrv0.config.gpio4_mode = GPIO_MODE_UART_B
-odrv0.reboot()
+odrv0.save_configuration()
+
+
+for Serial connection to work on M21
+odrv0.config.enable_uart_a = True
+odrv0.config.gpio1_mode = GPIO_MODE_UART_A
+odrv0.config.gpio2_mode = GPIO_MODE_UART_A
+odrv0.config.enable_uart_b = False
+odrv0.config.gpio3_mode = GPIO_MODE_DIGITAL
+odrv0.config.gpio4_mode = GPIO_MODE_DIGITAL
+odrv0.save_configuration()
 //------------------------//
 
 
