@@ -1,7 +1,7 @@
 ODRIVE CONFIG
 ////AXIS 0
 
-odrv0.axis0.motor.config.current_lim = 10
+odrv0.axis0.motor.config.current_lim = 20
 odrv0.axis0.controller.config.vel_limit = 20
 odrv0.axis0.motor.config.calibration_current = 10
 odrv0.config.enable_brake_resistor = True
@@ -34,7 +34,7 @@ odrv0.axis0.requested_state = 8
 
 ////////////////////AXIS 1
 
-odrv0.axis1.motor.config.current_lim = 10
+odrv0.axis1.motor.config.current_lim = 20
 odrv0.axis1.controller.config.vel_limit = 20
 odrv0.axis1.motor.config.calibration_current = 10
 odrv0.config.enable_brake_resistor = True
