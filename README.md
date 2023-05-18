@@ -22,7 +22,7 @@ Odrive_actuator_config_copypaste.txt has our old calibration files from last yea
 
 ## Common problems
 Odrive doesn't show up in odrivetool
-    -Is the green power LED on? If not the odrive probably isn't receiving power. Check fuses or multimeter voltage between power and ground.
+*Is the green power LED on? If not the odrive probably isn't receiving power. Check fuses or multimeter voltage between power and ground.
     -If you're on windows there's a good chance you need to change your USB driver using Zadig: https://zadig.akeo.ie/ and set the odrive driver to libusb-win32 or the other drivers until it works.
 Odrive doesn't want to do axis state calibration sequence after calibration
     -dump errors before and after.
