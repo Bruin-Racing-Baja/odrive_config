@@ -22,6 +22,7 @@ Odrive_actuator_config_copypaste.txt has our old calibration files from last yea
 
 ## Common problems
 Odrive doesn't show up in odrivetool
+<<<<<<< HEAD
     - Is the green power LED on? If not the odrive probably isn't receiving power. Check fuses or multimeter voltage between power and ground.
     - If you're on windows there's a good chance you need to change your USB driver using Zadig: https://zadig.akeo.ie/ and set the odrive driver to libusb-win32 or the other drivers until it works.
 Odrive doesn't want to do axis state calibration sequence after calibration
@@ -29,3 +30,12 @@ Odrive doesn't want to do axis state calibration sequence after calibration
     - Check all connections (motor wires, encoders, estops)
     - Make sure to save configuration of the odrive before running axis state calibration
     - if it only does the initial first spin that might mean the hardware limit switches are unplugged 
+=======
+*Is the green power LED on? If not the odrive probably isn't receiving power. Check fuses or multimeter voltage between power and ground.
+    -If you're on windows there's a good chance you need to change your USB driver using Zadig: https://zadig.akeo.ie/ and set the odrive driver to libusb-win32 or the other drivers until it works.
+Odrive doesn't want to do axis state calibration sequence after calibration
+    -dump errors before and after.
+    -Check all connections (motor wires, encoders, estops)
+    -Make sure to save configuration of the odrive before running axis state calibration
+    -if it only does the initial first spin that might mean the hardware limit switches are unplugged 
+>>>>>>> 348351a1d2d40415db0350af37edd15b9ae5e507
