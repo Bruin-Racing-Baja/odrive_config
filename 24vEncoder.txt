@@ -1,0 +1,80 @@
+1. 
+Connect to odrive by running "odrivetool" in your console. 
+The Odrive must be powered off of main battery power to show up.
+
+2.
+If you think you messed up something with the configuration you can run this command to go back to the default config
+
+odrv0.erase_configuration()
+
+Copy paste this initial configuration:
+
+odrv0.axis1.config.can.node_id = 1
+odrv0.can.config.baud_rate = 250000
+odrv0.axis1.motor.config.current_lim = 30
+odrv0.axis1.controller.config.vel_limit = 100
+odrv0.axis1.motor.config.calibration_current = 10
+odrv0.config.enable_brake_resistor = True
+odrv0.config.brake_resistance = 0.4699999988079071
+odrv0.config.dc_max_negative_current = -0.01
+odrv0.axis1.motor.config.pole_pairs = 7
+odrv0.axis1.motor.config.torque_constant = 8.27/140
+odrv0.axis1.motor.config.motor_type = MOTOR_TYPE_HIGH_CURRENT
+odrv0.axis1.encoder.config.cpr = 8192
+odrv0.axis1.encoder.config.mode = ENCODER_MODE_INCREMENTAL
+odrv0.axis1.encoder.config.use_index = True
+odrv0.axis1.config.startup_encoder_index_search = False
+odrv0.axis1.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
+odrv0.axis1.controller.config.vel_gain = 0.125
+odrv0.axis1.controller.config.vel_integrator_gain = .625
+
+3. 
+save your configuration using this command:
+
+odrv0.save_configuration()
+
+The odrive should disconnect and then reconnect.
+
+4.
+Run full axis state calibration_current
+
+odrv0.axis1.requested_state = 3
+
+The odrive should first beep, turn a little until the index is found, rotate one direction and then the other. 
+If one of those things doesn't happen run dump_errors(odrv0) and investigate!
+I also wrote some common errors at the bottom of the readme
+
+5.
+Set the precalibrated flags to true:
+
+odrv0.axis1.motor.config.pre_calibrated = True
+odrv0.axis1.encoder.config.pre_calibrated = True
+
+6.
+Check that the flags are actually true
+
+odrv0.axis1.motor.config.pre_calibrated
+odrv0.axis1.encoder.config.pre_calibrated
+
+If a flag is not true that normally means something went wrong during the calibration sequence.
+
+7.
+Save Configuration
+
+odrv0.save_configuration()
+
+The odrive should disconnect and reconnect
+
+8.
+Check that the odrive is functional by sending the following commands
+
+odrv0.axis1.requested_state = 6 #this tells the odrive to find its index
+
+dump_errors(odrv0) #check errors to make sure the index search was successful everything went ok
+
+odrv0.axis1.requested_state = 8 #this puts the odrive in velocity control mode
+
+odrv0.axis1.controller.input_vel = x #this sets the velocity of the odrive to x
+
+Make sure that the odrive can spin both directions and that the estops stop the motor from spinning when they are depressed.
+If there haven't been any issues then the odrive is ready to go and make are car speedy!
