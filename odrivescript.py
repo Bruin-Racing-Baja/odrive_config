@@ -1,7 +1,7 @@
 import odrive
 import time
 from odrive.utils import dump_errors
-import odrive.pyfibre.fibre.libfibre
+
 
 def initial_configuration_24():
     odrv0.axis1.config.can.node_id = 1
@@ -23,6 +23,7 @@ def initial_configuration_24():
     odrv0.axis1.controller.config.vel_gain = 0.125
     odrv0.axis1.controller.config.vel_integrator_gain = .625
 
+
 def initial_configuration_56():
     odrv0.axis1.config.can.node_id = 1
     odrv0.can.config.baud_rate = 250000
@@ -43,11 +44,11 @@ def initial_configuration_56():
     odrv0.axis1.controller.config.vel_gain = 0.125
     odrv0.axis1.controller.config.vel_integrator_gain = .625
 
-print("hello")
+# finds odrive
 odrv0 = odrive.find_any()
+print("voltage: " + odrv0.vbus_voltage)
 
-print (odrv0.vbus_voltage)
-
+# calls the appropriate motor calibration function
 print("Starting motor calibration...")
 x = input("Type 24 for 24vEncoder or 56 for 56vEncoder: ")
 if x == "24":
@@ -55,19 +56,19 @@ if x == "24":
 elif x == "56":
     initial_configuration_56()
 
-
+# saving configuration. need a try/except for reasons
 try:
-    print("we are here")
     odrv0.save_configuration()
 except:
-    print("now we are in the except")
     pass
 
+# finding odrv0 again beacuse save_configuration() makes it lose it
 odrv0 = odrive.find_any()
 
 print("Running full axis state calibration")
 odrv0.axis1.requested_state = 3
 
+# wait for the calibration to happen in real life
 time.sleep(8)
 
 odrv0.axis1.motor.config.pre_calibrated = True
@@ -79,7 +80,11 @@ print("motor precalibrated: ", odrv0.axis1.motor.config.pre_calibrated)
 print("encoder precalilbrated: ", odrv0.axis1.encoder.config.pre_calibrated)
 
 print("Saving configuration...")
-#odrv0.save_configuration()
+try:
+    odrv0.save_configuration()
+except:
+    pass
+odrv0 = odrive.find_any()
 print("Finding index")
 odrv0.axis1.requested_state = 6
 
